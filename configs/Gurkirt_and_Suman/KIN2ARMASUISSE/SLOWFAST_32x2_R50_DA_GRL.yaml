@@ -1,0 +1,126 @@
+####################################################################################################
+###########  Please check lines between #####, they need to be edited before experiment  ###########
+####################################################################################################
+GRL:
+  TRAIN_ENABLE: True
+  PLACE_ADV: ['Y', 'Y', 'Y', 'N']    # (slow, relation_slow, video_slow, fast)
+  USE_ATTN: 'TransAttn'    # none | TransAttn
+  USE_ATTN_FRAME: 'none'    # none | TransAttn
+  ENTROPY: False
+  ADD_FC: 1
+  SHARE_PARAMS: 'Y'    # choices = ['Y', 'N']
+  BETA: [0.3, 0, 0.75, 0.75]    # [slow, fast , relation_slow, video_slow]
+  DROP_OUT_I: 0.5
+  DROP_OUT_V: 0.5
+  FEAT_SHARED_DIM: 512
+DA:
+  TRAIN_ENABLE: False
+AUX:
+  ARMASUISSE: True
+  TRAIN_ENABLE: False
+  TEST_ENABLE: False
+  AUX_TYPE: "none"
+  CLASSES: 0
+  DATASET: Auxava
+  DETECTION_SCORE_THRESH: 0.8
+  FRAME_DIR: "/srv/beegfs02/scratch/da_action/data/armasuisse/img"
+  ##################################################
+  FRAME_LIST_DIR: "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/armasuisse_3_5000_all/frame_lists/"
+  ANNOTATION_DIR: "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/armasuisse_3_5000_all/annotations/"
+  ##################################################
+  LABEL_MAP_FILE: "armasuisse_action_list_v2.2.pbtxt"
+  EXCLUSION_FILE: "armasuisse_val_excluded_timestamps_v2.1.csv"
+  TRAIN_LISTS: ["train.csv"]
+  TEST_LISTS: ["val.csv"]   # frame list file
+  FULL_TEST_ON_VAL: False # dimensionality error in case False
+  TRAIN_GT_BOX_LISTS: ["armasuisse_train_v2.1.csv"]
+  TRAIN_PREDICT_BOX_LISTS: []
+  GROUNDTRUTH_FILE: "armasuisse_val_v2.1.csv"  # ava_val_v2.2_luca.csv
+  TEST_PREDICT_BOX_LISTS: ["armasuisse_val_v2.1.csv"] # ava_val_predicted_boxes_luca.csv
+  LOSS_FACTOR: 0.05
+  F_CONFUSION: 1000
+TRAIN:
+  ENABLE: False
+  DATASET: ava
+  BATCH_SIZE: 8
+  EVAL_PERIOD: 1
+  CHECKPOINT_PERIOD: 1
+  AUTO_RESUME: False
+  ##################################################
+  CHECKPOINT_FILE_PATH: "/cluster/work/cvl/susaha/dataset/action-dataset/pretrained_model/SLOWFAST_8x8_R50.pyth"
+  ##################################################
+  CHECKPOINT_TYPE: pytorch
+DATA:
+  NUM_FRAMES: 32
+  SAMPLING_RATE: 2
+  TRAIN_JITTER_SCALES: [256, 320]
+  TRAIN_CROP_SIZE: 224
+  TEST_CROP_SIZE: 256
+  INPUT_CHANNEL_NUM: [3, 3]
+DETECTION:
+  ENABLE: True
+  ALIGNED: False
+AVA:
+  DETECTION_SCORE_THRESH: 0.8
+  FRAME_DIR: "/srv/beegfs02/scratch/da_action/data/kinetics/images"
+  ##################################################
+  FRAME_LIST_DIR: "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/kinetics_3_5000_all/frame_lists/"
+  ANNOTATION_DIR: "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/kinetics_3_5000_all/annotations/"
+  ##################################################
+  LABEL_MAP_FILE: "kinetics_action_list_v2.2.pbtxt"
+  EXCLUSION_FILE: "kinetics_val_excluded_timestamps.csv"
+  TRAIN_LISTS: ["train.csv"]
+  TEST_LISTS: ["val.csv"]   # frame list file
+  FULL_TEST_ON_VAL: False # dimensionality error in case False
+  TRAIN_GT_BOX_LISTS: ["kinetics_train.csv"]
+  TRAIN_PREDICT_BOX_LISTS: []
+  GROUNDTRUTH_FILE: "kinetics_val.csv"  # ava_val_v2.2_luca.csv
+  TEST_PREDICT_BOX_LISTS: ["kinetics_val.csv"] # ava_val_predicted_boxes_luca.csv
+SLOWFAST:
+  ALPHA: 4
+  BETA_INV: 8
+  FUSION_CONV_CHANNEL_RATIO: 2
+  FUSION_KERNEL_SZ: 7
+RESNET:
+  ZERO_INIT_FINAL_BN: True
+  WIDTH_PER_GROUP: 64
+  NUM_GROUPS: 1
+  DEPTH: 50
+  TRANS_FUNC: bottleneck_transform
+  STRIDE_1X1: False
+  NUM_BLOCK_TEMP_KERNEL: [[3, 3], [4, 4], [6, 6], [3, 3]]
+  SPATIAL_DILATIONS: [[1, 1], [1, 1], [1, 1], [2, 2]]
+  SPATIAL_STRIDES: [[1, 1], [2, 2], [2, 2], [1, 1]]
+NONLOCAL:
+  LOCATION: [[[], []], [[], []], [[], []], [[], []]]
+  GROUP: [[1, 1], [1, 1], [1, 1], [1, 1]]
+  INSTANTIATION: dot_product
+  POOL: [[[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]]]
+BN:
+  USE_PRECISE_STATS: False
+  NUM_BATCHES_PRECISE: 200
+SOLVER:
+  BASE_LR: 0.01
+  COSINE_END_LR: 0.0001
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 1e-7
+  OPTIMIZING_METHOD: sgd
+  MAX_EPOCH: 4
+MODEL:
+  NUM_CLASSES: 3
+  ARCH: slowfast
+  MODEL_NAME: SlowFast
+  LOSS_FUNC: cross_entropy
+  DROPOUT_RATE: 0.5
+  HEAD_ACT: softmax
+TEST:
+  ENABLE: True
+  DATASET: ava
+  BATCH_SIZE: 4
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+NUM_GPUS: 4
+NUM_SHARDS: 1
+RNG_SEED: 0
+OUTPUT_DIR: "/home/yiflu/Desktop/experiments/KIN2ARMASUISSE/"

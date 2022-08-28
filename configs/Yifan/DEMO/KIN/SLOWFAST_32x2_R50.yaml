@@ -1,0 +1,91 @@
+TRAIN:
+  ENABLE: False
+  DATASET: ava
+  BATCH_SIZE: 4
+  EVAL_PERIOD: 1
+  CHECKPOINT_PERIOD: 1
+  AUTO_RESUME: True
+  CHECKPOINT_FILE_PATH: '/home/yiflu/Desktop/experiments/KIN2AVA/checkpoints/checkpoint_epoch_00004.pyth'  #path to pretrain model
+  CHECKPOINT_TYPE: pytorch
+DATA:
+  NUM_FRAMES: 32
+  SAMPLING_RATE: 2
+  TRAIN_JITTER_SCALES: [256, 320]
+  TRAIN_CROP_SIZE: 224
+  TEST_CROP_SIZE: 256
+  INPUT_CHANNEL_NUM: [3, 3]
+DETECTION:
+  ENABLE: True
+  ALIGNED: False
+AVA:
+  DETECTION_SCORE_THRESH: 0.8
+  FRAME_DIR: "/srv/beegfs02/scratch/da_action/data/kinetics/images"
+  FRAME_LIST_DIR: "/srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_6_5000_all/frame_lists/"
+  ANNOTATION_DIR: "/srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_6_5000_all/annotations/"
+  LABEL_MAP_FILE: "kinetics_action_list_v2.2.pbtxt"
+  EXCLUSION_FILE: "kinetics_val_excluded_timestamps.csv"
+  TRAIN_LISTS: ["train.csv"]
+  TEST_LISTS: ["val.csv"]
+  FULL_TEST_ON_VAL: False
+  TRAIN_GT_BOX_LISTS: ["kinetics_train.csv"]
+  TRAIN_PREDICT_BOX_LISTS: []
+  GROUNDTRUTH_FILE: "kinetics_val.csv"
+  TEST_PREDICT_BOX_LISTS: ["kinetics_val.csv"]
+SLOWFAST:
+  ALPHA: 4
+  BETA_INV: 8
+  FUSION_CONV_CHANNEL_RATIO: 2
+  FUSION_KERNEL_SZ: 5
+RESNET:
+  ZERO_INIT_FINAL_BN: True
+  WIDTH_PER_GROUP: 64
+  NUM_GROUPS: 1
+  DEPTH: 50
+  TRANS_FUNC: bottleneck_transform
+  STRIDE_1X1: False
+  NUM_BLOCK_TEMP_KERNEL: [[3, 3], [4, 4], [6, 6], [3, 3]]
+  SPATIAL_DILATIONS: [[1, 1], [1, 1], [1, 1], [2, 2]]
+  SPATIAL_STRIDES: [[1, 1], [2, 2], [2, 2], [1, 1]]
+NONLOCAL:
+  LOCATION: [[[], []], [[], []], [[], []], [[], []]]
+  GROUP: [[1, 1], [1, 1], [1, 1], [1, 1]]
+  INSTANTIATION: dot_product
+  POOL: [[[2, 2, 2], [2, 2, 2]], [[2, 2, 2], [2, 2, 2]], [[2, 2, 2], [2, 2, 2]], [[2, 2, 2], [2, 2, 2]]]
+BN:
+  USE_PRECISE_STATS: False
+  NUM_BATCHES_PRECISE: 200
+SOLVER:
+  BASE_LR: 0.0125
+  COSINE_END_LR: 0.00025
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 1e-7
+  OPTIMIZING_METHOD: sgd
+  MAX_EPOCH: 4
+MODEL:
+  NUM_CLASSES: 6
+  ARCH: slowfast
+  MODEL_NAME: SlowFast
+  LOSS_FUNC: cross_entropy
+  DROPOUT_RATE: 0.5
+  HEAD_ACT: softmax
+TEST:
+  ENABLE: False
+  DATASET: ava
+  BATCH_SIZE: 4
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+NUM_GPUS: 1
+NUM_SHARDS: 1
+RNG_SEED: 0
+OUTPUT_DIR: .
+TENSORBOARD:
+  MODEL_VIS:
+    TOPK_PREDS: 1
+DEMO:
+  ENABLE: True
+  OUTPUT_FILE: /home/yiflu/Desktop/experiments/KIN/output.mp4
+  LABEL_FILE_PATH: /home/yiflu/Desktop/domain-adaptive-slowfast/configs/Yifan/DEMO/ava_6_classids.json
+  INPUT_VIDEO: /srv/beegfs02/scratch/da_action/data/kinetics/images/003bW5kHjZU_000007  # Path to a video file or image folder
+  PREDS_BOXES: /srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_6_5000_all/annotations/kinetics_train.csv # Path to pre-computed bouding boxes in AVA format.
+  GT_BOXES: /srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_6_5000_all/annotations/kinetics_train.csv # Path to ground-truth boxes and labels in AVA format (optional).

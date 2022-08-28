@@ -1,0 +1,120 @@
+DACS:
+  TRAIN_ENABLE: True
+  AUGMENTATION_ENABLE: True
+  PSEUDO_LABEL_ENABLE: True
+  RESIZE_ENABLE: True
+  CONSISTENCY_LOSS: 'mse_weighted'
+  PSEUDO_TARGETS: 'logits'
+  CONSISTENCY_LOSS_WEIGHT: 'threshold_uniform'
+  THRESHOLDS: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+  THRESHOLD: 0.5
+AUX:
+  CAD2: True
+  TRAIN_ENABLE: False
+  TEST_ENABLE: False
+  AUX_TYPE: "none"
+  CLASSES: 0
+  DATASET: Auxava
+  DETECTION_SCORE_THRESH: 0.8
+  FRAME_DIR: "/srv/beegfs02/scratch/da_action/data/kinetics/images"
+  FRAME_LIST_DIR: "/srv/beegfs02/scratch/da_action/data/datasets_yifan/cad2/frame_lists/"
+  ANNOTATION_DIR: "/srv/beegfs02/scratch/da_action/data/datasets_yifan/cad2/annotations/"
+  LABEL_MAP_FILE: "cad2_action_list.pbtxt"
+  EXCLUSION_FILE: "cad2_val_excluded_timestamps.csv"
+  TRAIN_LISTS: ["cad2_train.csv"]
+  TEST_LISTS: ["cad2_val.csv"]   # frame list file
+  FULL_TEST_ON_VAL: False # dimensionality error in case False
+  TRAIN_GT_BOX_LISTS: ["cad2_train.csv"]
+  TRAIN_PREDICT_BOX_LISTS: []
+  GROUNDTRUTH_FILE: "cad2_val.csv"  # ava_val_v2.2_luca.csv
+  TEST_PREDICT_BOX_LISTS: ["cad2_val.csv"] # ava_val_predicted_boxes_luca.csv
+  LOSS_FACTOR: 0.05
+  F_CONFUSION: 1000
+TRAIN:
+  ENABLE: False
+  DATASET: ava
+  BATCH_SIZE: 4    # 4 for 2 GPUs
+  EVAL_PERIOD: 1
+  CHECKPOINT_PERIOD: 1
+  AUTO_RESUME: False
+  CHECKPOINT_FILE_PATH: "/srv/beegfs-benderdata/scratch/da_action/data/ava-kinetics/SLOWFAST_8x8_R50.pyth"
+  CHECKPOINT_TYPE: pytorch
+DATA:
+  NUM_FRAMES: 32
+  SAMPLING_RATE: 2
+  TRAIN_JITTER_SCALES: [256, 320]
+  TRAIN_CROP_SIZE: 224
+  TEST_CROP_SIZE: 256
+  INPUT_CHANNEL_NUM: [3, 3]
+DETECTION:
+  ENABLE: True
+  ALIGNED: False
+AVA:
+  KIN_CAD1: True
+  DETECTION_SCORE_THRESH: 0.8
+  FRAME_DIR: "/srv/beegfs02/scratch/da_action/data/kinetics/images"
+  FRAME_LIST_DIR: "/srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_8_5000_all+cad1/frame_lists"
+  ANNOTATION_DIR: "/srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_8_5000_all+cad1/annotations"
+  LABEL_MAP_FILE: "kinetics+cad1_action_list.pbtxt"
+  EXCLUSION_FILE: "kinetics+cad1_val_excluded_timestamps.csv"
+  TRAIN_LISTS: ["kinetics+cad1_all.csv"]
+  TEST_LISTS: ["kinetics+cad1_val.csv"]
+  FULL_TEST_ON_VAL: False
+  TRAIN_GT_BOX_LISTS: ["kinetics+cad1_all.csv"]
+  TRAIN_PREDICT_BOX_LISTS: []
+  GROUNDTRUTH_FILE: "kinetics+cad1_val.csv"  # ava_val_v2.2_luca.csv
+  TEST_PREDICT_BOX_LISTS: ["kinetics+cad1_val.csv"] # ava_val_predicted_boxes_luca.csv
+SLOWFAST:
+  ALPHA: 4
+  BETA_INV: 8
+  FUSION_CONV_CHANNEL_RATIO: 2
+  FUSION_KERNEL_SZ: 7
+RESNET:
+  ZERO_INIT_FINAL_BN: True
+  WIDTH_PER_GROUP: 64
+  NUM_GROUPS: 1
+  DEPTH: 50
+  TRANS_FUNC: bottleneck_transform
+  STRIDE_1X1: False
+  NUM_BLOCK_TEMP_KERNEL: [[3, 3], [4, 4], [6, 6], [3, 3]]
+  SPATIAL_DILATIONS: [[1, 1], [1, 1], [1, 1], [2, 2]]
+  SPATIAL_STRIDES: [[1, 1], [2, 2], [2, 2], [1, 1]]
+NONLOCAL:
+  LOCATION: [[[], []], [[], []], [[], []], [[], []]]
+  GROUP: [[1, 1], [1, 1], [1, 1], [1, 1]]
+  INSTANTIATION: dot_product
+  POOL: [[[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]], [[1, 2, 2], [1, 2, 2]]]
+BN:
+  USE_PRECISE_STATS: False
+  NUM_BATCHES_PRECISE: 200
+SOLVER:
+  BASE_LR: 0.015
+  COSINE_END_LR: 0.0005
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 1e-5
+  OPTIMIZING_METHOD: sgd
+  MAX_EPOCH: 4
+MODEL:
+  NUM_CLASSES: 8
+  ARCH: slowfast
+  MODEL_NAME: SlowFast
+  LOSS_FUNC: bce    # bce
+  DROPOUT_RATE: 0.5
+  HEAD_ACT: sigmoid    # sigmoid
+TEST:
+  ENABLE: True
+  DATASET: ava
+  BATCH_SIZE: 2    # 2 for 2 GPUs
+DATA_LOADER:
+  NUM_WORKERS: 2
+  PIN_MEMORY: True
+TENSORBOARD:
+  DACS:
+    PLOT_SAMPLES: True
+    PLOT_REAL_SAMPLES: False
+    PLOT_PRECISION_RECALL_CURVE: False
+    PSEUDOLABELS_CONFUSION_MATRIX: False
+NUM_GPUS: 2    # 2 for 2 GPUs
+NUM_SHARDS: 1
+RNG_SEED: 0
+OUTPUT_DIR: "/home/yiflu/Desktop/experiments/KINCAD12CAD2/"
