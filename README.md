@@ -143,7 +143,7 @@ challenging domain adaptation benchmarks.
 
 ### Demo Video (IhD-1)
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=69bCABGVt3w&ab_channel=YifanLu" target="_blank"><img src="http://img.youtube.com/vi/69bCABGVt3w&ab_channel=YifanLu/0.jpg" alt="IhD-1 Demo" width="853" height="480" border="10" /></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=69bCABGVt3w&ab" target="_blank"><img src="http://img.youtube.com/vi/69bCABGVt3w&ab/0.jpg" alt="IhD-1 Demo" width="853" height="480" border="10" /></a>
 
 The paper can be found here: [[Arxiv]]()
 
