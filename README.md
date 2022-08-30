@@ -130,11 +130,11 @@ challenging domain adaptation benchmarks.
     <th>DA-AIM</th>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline1.png" width=90% /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline1.png" width=95% /></td>
     <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim1.png" width=100% /></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline2.png" width=90% /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline2.png" width=95% /></td>
     <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim2.png" width=100% /></td>
   </tr>
   </table>
