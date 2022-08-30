@@ -130,18 +130,18 @@ challenging domain adaptation benchmarks.
     <th>DA-AIM</th>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline1.png" width=93% /></td>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim1.png" width=100% /></td>
+    <td><img src="pictures/baseline1.png" width=93% /></td>
+    <td><img src="pictures/da_aim1.png" width=100% /></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline2.png" width=93% /></td>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim2.png" width=100% /></td>
+    <td><img src="pictures/baseline2.png" width=93% /></td>
+    <td><img src="pictures/da_aim2.png" width=100% /></td>
   </tr>
   </table>
   </div>
 
 
-### Demo Video (IhD-1)
+### Demo on IhD-1 Dataset
 
 <div align="center">
   <img src="pictures/IhD1_demo.gif" width="600px"/>
@@ -268,10 +268,10 @@ Experiments can be executed with the following command:
 
 ```
 
-## Demo and Visualization
+## Demo and Visualization Tools
 
-PySlowFast offers a range of visualization tools. More information at [PySlowFast Visualization Tools](). 
-Additional visualization tools like plotting mixed samples and confusion matrices, please refer to [DA-AIM Visualization Tools]().
+PySlowFast offers a range of visualization tools. More information at [PySlowFast Visualization Tools](https://github.com/wwwfan628/DA-AIM/blob/main/VISUALIZATION_TOOLS.md). 
+Additional visualization tools like plotting mixed samples and confusion matrices, please refer to [DA-AIM Visualization Tools](https://github.com/wwwfan628/DA-AIM/blob/main/DAAIM_VISUALIZATION_TOOLS.md).
 
 
 ## Acknowledgements
