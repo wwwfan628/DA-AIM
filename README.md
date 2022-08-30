@@ -1,6 +1,5 @@
 # DA-AIM: Exploiting Instance-based Mixed Sampling via Auxiliary Source Domain Supervision for Domain-adaptive Action Detection
 
-------
 ![](https://img.shields.io/badge/Python-3.9.5-blue.svg)
 ![](https://img.shields.io/badge/Pytorch-1.8.0-green.svg)
 ![](https://img.shields.io/badge/PySlowFast-1.0-blueviolet.svg)
@@ -123,6 +122,7 @@ challenging domain adaptation benchmarks.
 
 
 ### Qualitative Results
+
 <div align=center>
 <table style="width:100%">
   <tr>
@@ -160,7 +160,6 @@ In case of interest, please consider citing:
 
 ## Setup Environment
 
-------
 Python 3.9.5 is used for this project. We recommend setting up a new virtual environment:
 
 ```shell
@@ -194,7 +193,6 @@ wget https://    # DA-AIM checkpoint
 
 ## Setup Datasets
 
-------
 Large-scale datasets are reduced because of three reasons:
 * action classes needs to be matched to target domain 
 * for fair comparison with smaller datasets
@@ -242,8 +240,6 @@ Datasets
 
 ## Training
 
-------
-
 **1) Setting configuration yaml files**
 
 Configuration yaml files are located under `./configs/daaim/`. Modify the settings according to your 
@@ -257,25 +253,7 @@ Experiments can be executed with the following command:
 
 ```
 
-[//]: # (We prepare some shell files for Euler or Leonhard, which are located under `./experiments/daaim/euler`. Since each )
-
-[//]: # (experiment should have different `COUT_DIR` and `init_method`, please update them before each experiment. Set `CFG_FILE` )
-
-[//]: # (to the corresponding yaml configuration file. If you don't modify the configuration yaml files in the previous step, the )
-
-[//]: # (settings can also be modified here.)
-
-[//]: # ()
-[//]: # (Execute experiments on Euler or Leonhard with the following command:)
-
-[//]: # ()
-[//]: # (```)
-[//]: # (```)
-
-
 ## Evaluation
-
-------
 
 **1) Setting configuration yaml files**
 
@@ -292,21 +270,11 @@ Experiments can be executed with the following command:
 
 ## Demo and Visualization
 
----
 PySlowFast offers a range of visualization tools. More information at [PySlowFast Visualization Tools](). 
-Additional visualization tools like plotting mixed samples and confusion matrices, please refer to [DA-AIM Visualization Tools](). 
-
-
-
-
-
-
-
+Additional visualization tools like plotting mixed samples and confusion matrices, please refer to [DA-AIM Visualization Tools]().
 
 
 ## Acknowledgements
-
----
 
 This project is based on the following open-source projects. We would like to thank their contributors for implementing
 and maintaining their works. Besides, many thanks to labmates Jizhao Xu, Luca Sieber and Rishabh Singh whose previous 
