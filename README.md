@@ -130,12 +130,12 @@ challenging domain adaptation benchmarks.
     <th>DA-AIM</th>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline1.png"/></td>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim1.png"/></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline1.png" /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim1.png" width=110% /></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline2.png"/></td>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim2.png"/></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline2.png" /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim2.png" width=110% /></td>
   </tr>
   </table>
   </div>
@@ -144,7 +144,7 @@ challenging domain adaptation benchmarks.
 ### Demo Video (IhD-1)
 
 <video width="640" height="320" autoplay="autoplay" controls="controls" loop="loop" preload="auto">
-    <source src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/IhD1_demo.mp4" type="video/mp4">
+    <source src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/IhD1_demo.mov" type="video/mov">
 </video>
 
 The paper can be found here: [[Arxiv]]()
