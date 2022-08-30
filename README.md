@@ -143,9 +143,7 @@ challenging domain adaptation benchmarks.
 
 ### Demo Video (IhD-1)
 
-<video width="853" height="480" autoplay="autoplay" controls="controls" loop="loop" preload="auto">
-    <source src="https://drive.google.com/file/d/1l_LQEyp1j022eZLxjiHNhKI-oyZCVvjZ/view?usp=sharing" type="video/mp4">
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/69bCABGVt3w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 The paper can be found here: [[Arxiv]]()
 
