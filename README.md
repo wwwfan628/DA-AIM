@@ -23,7 +23,7 @@ For ASD, we propose a new action detection dataset with dense frame-level annota
 domain-adaptive action instance mixing (DA-AIM). We demonstrate that DA-AIM consistently outperforms prior works on 
 challenging domain adaptation benchmarks. 
 
-![overview](https://github.com/wwwfan628/DA-AIM/blob/main/pictures/overview.pdf)
+![overview](https://github.com/wwwfan628/DA-AIM/blob/main/pictures/overview.png)
 
 ### Quantitative Results
 
@@ -130,12 +130,12 @@ challenging domain adaptation benchmarks.
     <th>DA-AIM</th>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline1.pdf" width=100% /></td>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim1.pdf" width=100% /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline1.png" width=100% /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim1.png" width=100% /></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline2.pdf" width=100% /></td>
-    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim2.pdf" width=100% /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/baseline2.png" width=100% /></td>
+    <td><img src="https://github.com/wwwfan628/DA-AIM/blob/main/pictures/da_aim2.png" width=100% /></td>
   </tr>
   </table>
   </div>
@@ -144,7 +144,7 @@ challenging domain adaptation benchmarks.
 ### Demo Video (IhD-1)
 
 <video width="853" height="480" autoplay="autoplay" controls="controls" loop="loop" preload="auto">
-    <source src="https://www.youtube.com/watch?v=69bCABGVt3w&ab_channel=YifanLu" type="video/mp4">
+    <source src="https://drive.google.com/file/d/1l_LQEyp1j022eZLxjiHNhKI-oyZCVvjZ/view?usp=sharing" type="video/mp4">
 </video>
 
 The paper can be found here: [[Arxiv]]()
