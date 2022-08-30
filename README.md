@@ -143,7 +143,9 @@ challenging domain adaptation benchmarks.
 
 ### Demo Video (IhD-1)
 
-![demo](https://github.com/wwwfan628/DA-AIM/blob/main/pictures/IhD1_demo.gif)
+<div align="center">
+  <img src="pictures/IhD1_demo.gif" width="600px"/>
+</div>
 
 The paper can be found here: [[Arxiv]]()
 
