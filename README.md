@@ -151,6 +151,7 @@ challenging domain adaptation benchmarks.
 The paper can be found here: [[Arxiv]]()
 
 In case of interest, please consider citing:
+
 ```
 @InProceedings{
 }
@@ -183,14 +184,12 @@ python setup.py build develop
 ```
 
 Before training or evaluation, please download the MiT weights and a pretrained DA-AIM checkpoint using the
-following command:
+following command or directly download them [here]():
 
 ```shell
 wget https://    # MiT weights
 wget https://    # DA-AIM checkpoint
 ```
-
-
 
 ## Setup Datasets
 
@@ -205,35 +204,60 @@ the dataset suggest the number of action classes, the maximum number of training
 training samples and `all` validation samples from the original dataset are kept.
 
 **ava_6_5000_all:** is reduced from the original **AVA** dataset. Please, download the video frames
-and annotations from [here]() and extract them to `Datasets/ava_6_5000_all`.
+and annotations from [here]() and extract them to `Datasets/Annotations/ava_6_5000_all`. 
 
 **kinetics_6_5000_all:** is reduced from the original **AVA-Kinetics** dataset. Please, download the video frames
-and annotations from [here]() and extract them to `Datasets/kinetics_6_5000_all`.
+and annotations from [here]() and extract them to `Datasets/Annotations/kinetics_6_5000_all`.
+
+You can also use commands to download and extract datasets:
+```
+wget https://         # ava_6_5000_all
+wget https://         # kinetics_6_5000_all
+tar -C Datasets/Frames -xvf xxx.tar         # extract frames to Datasets/Frames directory
+```
 
 The final folder structure should look like this:
 ```none
 Datasets
-├── ...
-├── ava_6_5000_all
-│   ├── annotations
-│   │   ├── ava_action_list_v2.2.pbtxt
-│   │   ├── ava_included_timestamps_v2.2.txt
-│   │   ├── ava_train_excluded_timestamps_v2.2.csv
-│   │   ├── ava_val_excluded_timestamps_v2.2.csv
-│   │   ├── ava_train_v2.2.csv
-│   │   ├── ava_val_v2.2.csv
-│   ├── frame_lists
-│   │   ├── train.csv
-│   │   ├── val.csv
-├── kinetics_6_5000_all
-│   ├── annotations
-│   │   ├── kinetics_action_list_v2.2.pbtxt
-│   │   ├── kinetics_val_excluded_timestamps.csv
-│   │   ├── kinetics_train.csv
-│   │   ├── kinetics_val.csv
-│   ├── frame_lists
-│   │   ├── train.csv
-│   │   ├── val.csv
+├── Annotations
+│   ├── ava_6_5000_all
+│   │   ├── annotations
+│   │   │   ├── ava_action_list_v2.2.pbtxt
+│   │   │   ├── ava_included_timestamps_v2.2.txt
+│   │   │   ├── ava_train_excluded_timestamps_v2.2.csv
+│   │   │   ├── ava_val_excluded_timestamps_v2.2.csv
+│   │   │   ├── ava_train_v2.2.csv
+│   │   │   ├── ava_val_v2.2.csv
+│   │   ├── frame_lists
+│   │   │   ├── train.csv
+│   │   │   ├── val.csv
+│   ├── kinetics_6_5000_all
+│   │   ├── annotations
+│   │   │   ├── kinetics_action_list_v2.2.pbtxt
+│   │   │   ├── kinetics_val_excluded_timestamps.csv
+│   │   │   ├── kinetics_train.csv
+│   │   │   ├── kinetics_val.csv
+│   │   ├── frame_lists
+│   │   │   ├── train.csv
+│   │   │   ├── val.csv
+│   ├── ...
+├── Frames
+│   ├── ava_6_5000_all
+│   │   ├── IMG1000
+│   │   │   ├──
+│   │   │   ├── ...
+│   │   ├── IMG1000
+│   │   │   ├──
+│   │   │   ├── ...
+│   │   ├── ...
+│   ├── kinetics_6_5000_all
+│   │   ├── IMG1000
+│   │   │   ├──
+│   │   │   ├── ...
+│   │   ├── IMG1000
+│   │   │   ├──
+│   │   │   ├── ...
+│   ├── ...
 ├── ...
 ```
 
@@ -251,23 +275,41 @@ More details and explanations of the configuration settings please refer to `./s
 
 Experiments can be executed with the following command:
 ```
-
+python tools/run_net.py --cfg "configs/DA-AIM/KIN2AVA/SLOWFAST_32x2_R50_DA_AIM.yaml" \
+        OUTPUT_DIR "/PATH/TO/OUTPUT/DIR" \
+        AVA.FRAME_DIR "Datasets/Frames/kinetics_6_5000_all" \
+        AVA.FRAME_LIST_DIR "Datasets/Annotations/kinetics_6_5000_all/frame_lists/" \
+        AVA.ANNOTATION_DIR "Datasets/Annotations/kinetics_6_5000_all/annotations/" \
+        AUX.FRAME_DIR "Datasets/Frames/ava_6_5000_all" \
+        AUX.FRAME_LIST_DIR "Datasets/Annotations/ava_6_5000_all/frame_lists/" \
+        AUX.ANNOTATION_DIR "Datasets/Annotations/ava_6_5000_all/annotations/" \
+        TRAIN.CHECKPOINT_FILE_PATH "/PATH/TO/CKP/FILE"
 ```
+If you skip the first step, please remember to modify the paths to dataset frames and annotations as well as the path 
+to the pretrained checkpoint here. Examples of shell scripts are provided under `./experiments`.
 
 ## Evaluation
 
 **1) Setting configuration yaml files**
 
-Similarly as in training, configuration settings need to be modified as required. Configuration yaml files are located 
-under `./configs/daaim/`.To note is that `TRAIN.ENABLE` should be set as `False` in order to evoke evaluation. As previously said,
-this step can be skipped and necessary settings can be modified in experiment shell files.
+Similarly as in training, configuration settings need to be modified according to requirements. Configuration yaml files are located 
+under `./configs/DA-AIM/`.To note is that `TRAIN.ENABLE` should be set as `False` in order to evoke evaluation. As previously mentioned,
+this step can be skipped and necessary settings can be modified in shell files.
 
-**2) Run experiments**
+**2) Perform evaluation**
 
-Experiments can be executed with the following command:
+To perform evaluation, please use the following command:
 ```
-
+python tools/run_net.py --cfg "configs/DA-AIM/AVA/SLOWFAST_32x2_R50.yaml" \
+        TRAIN.ENABLE False \
+        TRAIN.AUTO_RESUME True \
+        TENSORBOARD.ENABLE False \
+        OUTPUT_DIR "/PATH/TO/OUTPUT/DIR" \
+        AVA.FRAME_DIR "Datasets/Frames/ava_6_5000_all" \
+        AVA.FRAME_LIST_DIR "Datasets/Annotations/ava_6_5000_all/frame_lists/" \
+        AVA.ANNOTATION_DIR "Datasets/Annotations/ava_6_5000_all/annotations/" 
 ```
+Also here, attention should be paid to paths to the dataset frames and annotations, if the first step is skipped.
 
 ## Demo and Visualization Tools
 
