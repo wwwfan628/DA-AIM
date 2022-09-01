@@ -144,9 +144,9 @@ def load_boxes_and_labels(cfg, mode):
         )
 
     if mode.startswith('aux'):
-        denser = cfg.AUX.CAD1 or cfg.AUX.CAD2 or cfg.AUX.KIN_CAD2 or cfg.AUX.KIN_CAD1
+        denser = cfg.AUX.IhD2 or cfg.AUX.IhD1 or cfg.AUX.KIN_IhD1 or cfg.AUX.KIN_IhD2
     else:
-        denser = cfg.AVA.CAD1 or cfg.AVA.CAD2 or cfg.AVA.KIN_CAD2 or cfg.AVA.KIN_CAD1
+        denser = cfg.AVA.IhD2 or cfg.AVA.IhD1 or cfg.AVA.KIN_IhD1 or cfg.AVA.KIN_IhD2
     all_boxes, timestamps, count, unique_box_count = parse_bboxes_file(
         ann_filenames=ann_filenames,
         ann_is_gt_box=ann_is_gt_box,
@@ -164,7 +164,7 @@ def load_boxes_and_labels(cfg, mode):
     return all_boxes, timestamps
 
 
-def get_keyframe_data(boxes_and_labels, timestamps, armasuisse=False, cad1=False, kin_cad1=False, kin_cad1_num_cad1=0):
+def get_keyframe_data(boxes_and_labels, timestamps, armasuisse=False, ihd2=False, kin_ihd2=False, kin_ihd2_num_ihd2=0):
     """
     Getting keyframe indices, boxes and labels in the dataset.
 
@@ -178,7 +178,7 @@ def get_keyframe_data(boxes_and_labels, timestamps, armasuisse=False, cad1=False
             video_idx and sec_idx to a list of boxes and corresponding labels.
     """
 
-    def sec_to_frame(sec, armasuisse, cad1):
+    def sec_to_frame(sec, armasuisse, ihd2):
         """
         Convert time index (in second) to frame index.
         0: 900
@@ -190,7 +190,7 @@ def get_keyframe_data(boxes_and_labels, timestamps, armasuisse=False, cad1=False
             rest = sec - math.floor(sec)
             sec = math.floor(sec) + transfer[str(rest)]
             return int(sec * FPS_ARMASUISSE)
-        elif cad1:
+        elif ihd2:
             return int(sec * FPS_ARMASUISSE)
         elif sec < 900:
             return int(sec * FPS)
@@ -201,8 +201,8 @@ def get_keyframe_data(boxes_and_labels, timestamps, armasuisse=False, cad1=False
     keyframe_boxes_and_labels = []
     count = 0
     for video_idx in range(len(boxes_and_labels)):
-        if kin_cad1 and video_idx < kin_cad1_num_cad1:
-            cad1 = True
+        if kin_ihd2 and video_idx < kin_ihd2_num_ihd2:
+            ihd2 = True
         sec_idx = 0
         keyframe_boxes_and_labels.append([])
         for sec in boxes_and_labels[video_idx].keys():
@@ -213,7 +213,7 @@ def get_keyframe_data(boxes_and_labels, timestamps, armasuisse=False, cad1=False
             if len(boxes_and_labels[video_idx][sec]) > 0:
                 time_stamp = timestamps[video_idx][sec]
                 keyframe_indices.append(
-                    (video_idx, sec_idx, sec, sec_to_frame(time_stamp, armasuisse, cad1))
+                    (video_idx, sec_idx, sec, sec_to_frame(time_stamp, armasuisse, ihd2))
                 )
                 keyframe_boxes_and_labels[video_idx].append(
                     boxes_and_labels[video_idx][sec]

@@ -64,7 +64,6 @@ def make_image_key(video_id, timestamp, denser=False):
         return "%s,%04d" % (video_id, int(float(timestamp)))
 
 
-
 def read_csv(csv_file, class_whitelist=None, load_score=False, denser=False):
     """Loads boxes and class labels from a CSV file in the AVA format.
     CSV file format described at https://research.google.com/ava/download.html.
@@ -269,7 +268,7 @@ def run_evaluation(
         pprint.pprint(metrics, indent=2)
         logger.info(pprint.pformat(metrics, indent=2))
 
-    if cfg.TENSORBOARD.DACS.PLOT_PRECISION_RECALL_CURVE and (writer is not None):
+    if cfg.TENSORBOARD.DAAIM.PLOT_PRECISION_RECALL_CURVE and (writer is not None):
         precisions_per_class = pascal_evaluator._evaluation.precisions_per_class
         recalls_per_class = pascal_evaluator._evaluation.recalls_per_class
         thresholds_per_class = pascal_evaluator._evaluation.thresholds_per_class

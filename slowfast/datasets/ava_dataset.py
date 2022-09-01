@@ -24,12 +24,12 @@ class Ava(torch.utils.data.Dataset):
     def __init__(self, cfg, split):
         self.cfg = cfg
         self._armasuisse = cfg.AVA.ARMASUISSE
-        self._cad1 = cfg.AVA.CAD1
-        self._kin_cad1 = cfg.AVA.KIN_CAD1
+        self._ihd2 = cfg.AVA.IhD2
+        self._kin_ihd2 = cfg.AVA.KIN_IhD2
         if split == "train":
-            self._kin_cad1_num_cad1 = cfg.AVA.KIN_CAD1_NUM_CAD1_TRAIN
+            self._kin_ihd2_num_ihd2 = cfg.AVA.KIN_IhD2_NUM_IhD2_TRAIN
         else:
-            self._kin_cad1_num_cad1 = cfg.AVA.KIN_CAD1_NUM_CAD1_VAL
+            self._kin_ihd2_num_ihd2 = cfg.AVA.KIN_IhD2_NUM_IhD2_VAL
         self._split = split
         self._sample_rate = cfg.DATA.SAMPLING_RATE
         self._video_length = cfg.DATA.NUM_FRAMES
@@ -91,7 +91,7 @@ class Ava(torch.utils.data.Dataset):
         (
             self._keyframe_indices,
             self._keyframe_boxes_and_labels,
-        ) = ava_helper.get_keyframe_data(boxes_and_labels, timestamps, self._armasuisse, self._cad1, self._kin_cad1, self._kin_cad1_num_cad1)
+        ) = ava_helper.get_keyframe_data(boxes_and_labels, timestamps, self._armasuisse, self._ihd2, self._kin_ihd2, self._kin_ihd2_num_ihd2)
 
         # Calculate the number of used boxes.
         self._num_boxes_used = ava_helper.get_num_boxes_used(
@@ -472,12 +472,12 @@ class Auxava(torch.utils.data.Dataset):
     def __init__(self, cfg, split):
         self.cfg = cfg
         self._armasuisse = cfg.AUX.ARMASUISSE
-        self._cad1 = cfg.AUX.CAD1
-        self._kin_cad1 = cfg.AUX.KIN_CAD1
+        self._ihd2 = cfg.AUX.IhD2
+        self._kin_ihd2 = cfg.AUX.KIN_IhD2
         if split == "train":
-            self._kin_cad1_num_cad1 = cfg.AUX.KIN_CAD1_NUM_CAD1_TRAIN
+            self._kin_ihd2_num_ihd2 = cfg.AUX.KIN_IhD2_NUM_IhD2_TRAIN
         else:
-            self._kin_cad1_num_cad1 = cfg.AUX.KIN_CAD1_NUM_CAD1_VAL
+            self._kin_ihd2_num_ihd2 = cfg.AUX.KIN_IhD2_NUM_IhD2_VAL
         self._split = split
         self._sample_rate = cfg.DATA.SAMPLING_RATE
         self._video_length = cfg.DATA.NUM_FRAMES
@@ -539,7 +539,7 @@ class Auxava(torch.utils.data.Dataset):
         (
             self._keyframe_indices,
             self._keyframe_boxes_and_labels,
-        ) = ava_helper.get_keyframe_data(boxes_and_labels, timestamps, self._armasuisse, self._cad1, self._kin_cad1, self._kin_cad1_num_cad1)
+        ) = ava_helper.get_keyframe_data(boxes_and_labels, timestamps, self._armasuisse, self._ihd2, self._kin_ihd2, self._kin_ihd2_num_ihd2)
 
         # Calculate the number of used boxes.
         self._num_boxes_used = ava_helper.get_num_boxes_used(

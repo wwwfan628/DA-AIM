@@ -87,7 +87,7 @@ class AVAMeter(object):
         gt_filename = os.path.join(
             cfg.AVA.ANNOTATION_DIR, cfg.AVA.GROUNDTRUTH_FILE
         )
-        denser = cfg.AVA.CAD1 or cfg.AVA.CAD2 or cfg.AVA.KIN_CAD2 or cfg.AVA.KIN_CAD1
+        denser = cfg.AVA.IhD2 or cfg.AVA.IhD1 or cfg.AVA.KIN_IhD1 or cfg.AVA.KIN_IhD2
         self.full_groundtruth = read_csv(gt_filename, self.class_whitelist, denser=denser)
         self.mini_groundtruth = get_ava_mini_groundtruth(self.full_groundtruth, denser)
 
@@ -293,7 +293,7 @@ class DA_AVAMeter(AVAMeter):
         gt_filename = os.path.join(
             cfg.AUX.ANNOTATION_DIR, cfg.AUX.GROUNDTRUTH_FILE
         )
-        denser = cfg.AUX.CAD1 or cfg.AUX.CAD2 or cfg.AUX.KIN_CAD2 or cfg.AUX.KIN_CAD1
+        denser = cfg.AUX.IhD2 or cfg.AUX.IhD1 or cfg.AUX.KIN_IhD1 or cfg.AUX.KIN_IhD2
         self.full_groundtruth = read_csv(gt_filename, self.class_whitelist, denser=denser)
         self.mini_groundtruth = get_ava_mini_groundtruth(self.full_groundtruth, denser)
 

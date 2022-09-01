@@ -14,7 +14,7 @@ from train_grl import train_grl
 from train_con import train_con
 from train_aux import train_aux
 from test_aux import test_aux
-from train_dacs import train_dacs
+from train_daaim import train_daaim
 from visualization import visualize
 
 
@@ -30,9 +30,9 @@ def main():
     print('Perform domain adaptive training')
     if cfg.AUX.TEST_ENABLE:
         launch_job(cfg=cfg, init_method=args.init_method, func=test_aux)
-    elif cfg.DACS.TRAIN_ENABLE:
+    elif cfg.DAAIM.TRAIN_ENABLE:
         print('DACS_train enable')
-        launch_job(cfg=cfg, init_method=args.init_method, func=train_dacs)
+        launch_job(cfg=cfg, init_method=args.init_method, func=train_daaim)
     elif cfg.CON.TRAIN_ENABLE:
         print('CON_train enable')
         launch_job(cfg=cfg, init_method=args.init_method, func=train_con)

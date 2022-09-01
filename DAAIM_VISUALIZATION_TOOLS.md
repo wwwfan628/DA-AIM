@@ -26,13 +26,13 @@ To enable visulization of mixed samples, add following block in yaml configurati
 
 ```
 TENSORBOARD:
-  DACS:
+  DAAIM:
     PLOT_REAL_SAMPLES: True
 ```
 
 #### Confusion Matrix
 
-Example: confusion matrices from AVA-KIN → AVA experiments
+Example: confusion matrices from **AVA-KIN → AVA** experiments
 <div align=center>
 <table style="width:100%">
   <tr>
@@ -50,6 +50,6 @@ To visualize confusion matrices, use following setting in configuration yaml fil
 
 ```
 TENSORBOARD:
-  DACS:
+  DAAIM:
     PSEUDOLABELS_CONFUSION_MATRIX: True
 ```

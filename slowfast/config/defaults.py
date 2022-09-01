@@ -46,17 +46,17 @@ _C.CON.TRAIN_ENABLE = False
 _C.CON.LOSS_FACTOR = 0.5
 _C.CON.LAMBDA = 0.1
 
-# DACS & Mean Teacher options
-_C.DACS = CfgNode()
-_C.DACS.TRAIN_ENABLE = False
-_C.DACS.AUGMENTATION_ENABLE = True
-_C.DACS.PSEUDO_LABEL_ENABLE = True
-_C.DACS.RESIZE_ENABLE = True
-_C.DACS.CONSISTENCY_LOSS = 'mse_weighted'  # mse_weighted or bce_weighted
-_C.DACS.PSEUDO_TARGETS = 'logits'    # logits or binary
-_C.DACS.CONSISTENCY_LOSS_WEIGHT = 'threshold_uniform'     # threshold_uniform or threshold or none or uniform
-_C.DACS.THRESHOLDS = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
-_C.DACS.THRESHOLD = 0.9
+# DA-AIM options
+_C.DAAIM = CfgNode()
+_C.DAAIM.TRAIN_ENABLE = False
+_C.DAAIM.AUGMENTATION_ENABLE = True
+_C.DAAIM.PSEUDO_LABEL_ENABLE = True
+_C.DAAIM.RESIZE_ENABLE = True
+_C.DAAIM.CONSISTENCY_LOSS = 'mse_weighted'  # mse_weighted or bce_weighted
+_C.DAAIM.PSEUDO_TARGETS = 'logits'    # logits or binary
+_C.DAAIM.CONSISTENCY_LOSS_WEIGHT = 'threshold_uniform'     # threshold_uniform or threshold or none or uniform
+_C.DAAIM.THRESHOLDS = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+_C.DAAIM.THRESHOLD = 0.9
 
 _C.GRL = CfgNode()
 _C.GRL.TRAIN_ENABLE = False
@@ -77,16 +77,16 @@ _C.DA.TRAIN_ENABLE = False
 _C.AUX = CfgNode()
 # If dataset is armasuisse
 _C.AUX.ARMASUISSE = False
-# If dataset is CAD2
-_C.AUX.CAD2 = False
-# If dataset is CAD1
-_C.AUX.CAD1 = False
-# If dataset is KIN+CAD2
-_C.AUX.KIN_CAD2 = False
-# If dataset is KIN+CAD1
-_C.AUX.KIN_CAD1 = False
-_C.AUX.KIN_CAD1_NUM_CAD1_TRAIN = 35    # the number of videos from cad1 in gt files
-_C.AUX.KIN_CAD1_NUM_CAD1_VAL = 7
+# If dataset is IhD1
+_C.AUX.IhD1 = False
+# If dataset is IhD2
+_C.AUX.IhD2 = False
+# If dataset is KIN+IhD1
+_C.AUX.KIN_IhD1 = False
+# If dataset is KIN+IhD2
+_C.AUX.KIN_IhD2 = False
+_C.AUX.KIN_IhD2_NUM_IhD2_TRAIN = 35    # the number of videos from IhD2 in gt files
+_C.AUX.KIN_IhD2_NUM_IhD2_VAL = 7
 
 _C.AUX.TRAIN_ENABLE = False
 _C.AUX.TEST_ENABLE = False
@@ -542,19 +542,19 @@ _C.AVA = CfgNode()
 # If dataset is armasuisse
 _C.AVA.ARMASUISSE = False
 
-# If dataset is CAD2
-_C.AVA.CAD2 = False
+# If dataset is IhD1
+_C.AVA.IhD1 = False
 
-# If dataset is CAD1
-_C.AVA.CAD1 = False
+# If dataset is IhD2
+_C.AVA.IhD2 = False
 
-# If dataset is KIN+CAD2
-_C.AVA.KIN_CAD2 = False
+# If dataset is KIN+IhD1
+_C.AVA.KIN_IhD1 = False
 
-# If dataset is KIN+CAD1
-_C.AVA.KIN_CAD1 = False
-_C.AVA.KIN_CAD1_NUM_CAD1_TRAIN = 35    # the number of videos from cad1 in gt files
-_C.AVA.KIN_CAD1_NUM_CAD1_VAL = 7
+# If dataset is KIN+IhD2
+_C.AVA.KIN_IhD2 = False
+_C.AVA.KIN_IhD2_NUM_IhD2_TRAIN = 35    # the number of videos from IhD2 in gt files
+_C.AVA.KIN_IhD2_NUM_IhD2_VAL = 7
 
 # Directory path of frames.
 _C.AVA.FRAME_DIR = "/mnt/fair-flash3-east/ava_trainval_frames.img/"
@@ -693,16 +693,16 @@ _C.TENSORBOARD.CLASS_NAMES_PATH = ""
 # in the format {"parent_class": ["child_class1", "child_class2",...], ...}.
 _C.TENSORBOARD.CATEGORIES_PATH = ""
 
-# config for train_dacs plotting
-_C.TENSORBOARD.DACS = CfgNode()
+# config for DA-AIM plotting
+_C.TENSORBOARD.DAAIM = CfgNode()
 # plot labeled, unlabeled, mixed samples (with pseudo-labels)
-_C.TENSORBOARD.DACS.PLOT_SAMPLES = False
+_C.TENSORBOARD.DAAIM.PLOT_SAMPLES = False
 # ENABLE ONLY IN SINGLE-LABEL CLASSIFICATION: plot labeled, unlabeled, mixed samples (with real-labels)
-_C.TENSORBOARD.DACS.PLOT_REAL_SAMPLES = False
+_C.TENSORBOARD.DAAIM.PLOT_REAL_SAMPLES = False
 # plot pr-curves for each class
-_C.TENSORBOARD.DACS.PLOT_PRECISION_RECALL_CURVE = False
+_C.TENSORBOARD.DAAIM.PLOT_PRECISION_RECALL_CURVE = False
 # ENABLE ONLY IN SINGLE-LABEL CLASSIFICATION:plot confusion matrix
-_C.TENSORBOARD.DACS.PSEUDOLABELS_CONFUSION_MATRIX = True
+_C.TENSORBOARD.DAAIM.PSEUDOLABELS_CONFUSION_MATRIX = False
 
 # config for tsne visualization
 _C.TENSORBOARD.TSNE = CfgNode()

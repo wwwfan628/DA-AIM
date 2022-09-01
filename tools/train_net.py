@@ -97,7 +97,7 @@ def train_epoch(
 
         # Compute the loss.
         if cfg.MODEL.LOSS_FUNC == 'cross_entropy':
-            if cfg.AVA.CAD2:
+            if cfg.AVA.IhD1:
                 if not torch.all(labels.sum(dim=1) == 1):
                     for label in labels:
                         if label.sum() != 1 and label[6] == 1:
@@ -106,7 +106,7 @@ def train_epoch(
                             label[7] = 0
                         if label.sum() != 1:
                             print(label)
-            if cfg.AVA.CAD1:
+            if cfg.AVA.IhD2:
                 if not torch.all(labels.sum(dim=1) == 1):
                     for label in labels:
                         if label[3] == 1 and label[5] == 1:

@@ -23,7 +23,14 @@ For ASD, we propose a new action detection dataset with dense frame-level annota
 domain-adaptive action instance mixing (DA-AIM). We demonstrate that DA-AIM consistently outperforms prior works on 
 challenging domain adaptation benchmarks. 
 
-![overview](https://github.com/wwwfan628/DA-AIM/blob/main/pictures/overview.png)
+![overview](pictures/overview.png)
+
+### Demo on IhD-1 Dataset
+
+<div align="center">
+  <img src="pictures/IhD1_demo.gif" width="600px"/>
+</div>
+
 
 ### Quantitative Results
 
@@ -141,12 +148,6 @@ challenging domain adaptation benchmarks.
   </div>
 
 
-### Demo on IhD-1 Dataset
-
-<div align="center">
-  <img src="pictures/IhD1_demo.gif" width="600px"/>
-</div>
-
 The paper can be found here: [[Arxiv]]()
 
 In case of interest, please consider citing:
@@ -242,7 +243,7 @@ Datasets
 
 **1) Setting configuration yaml files**
 
-Configuration yaml files are located under `./configs/daaim/`. Modify the settings according to your 
+Configuration yaml files are located under `./configs/DA-AIM/`. Modify the settings according to your 
 requirements. Most of the time, this step can be skipped and necessary settings can be modified in experiment shell files.
 More details and explanations of the configuration settings please refer to `./slowfast/config/defaults.py`.
 
