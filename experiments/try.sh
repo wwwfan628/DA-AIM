@@ -25,7 +25,7 @@ python tools/run_net.py --cfg ${CFG_FILE} \
         AUX.FRAME_DIR "/srv/beegfs02/scratch/da_action/data/ava/frames/" \
         AUX.FRAME_LIST_DIR "/srv/beegfs02/scratch/da_action/data/datasets_yifan/ava_6_5000_all/frame_lists/" \
         AUX.ANNOTATION_DIR "/srv/beegfs02/scratch/da_action/data/datasets_yifan/ava_6_5000_all/annotations/" \
-        TRAIN.BATCH_SIZE 24 \
+        TRAIN.BATCH_SIZE 8 \
         TRAIN.CHECKPOINT_FILE_PATH "/srv/beegfs-benderdata/scratch/da_action/data/ava-kinetics/SLOWFAST_8x8_R50.pyth" \
         DATA_LOADER.NUM_WORKERS 2 \
         SOLVER.BASE_LR 0.01 \
