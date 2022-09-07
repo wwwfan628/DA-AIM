@@ -40,7 +40,7 @@ python tools/run_net.py --cfg ${CFG_FILE} \
         DAAIM.CONSISTENCY_LOSS_WEIGHT 'ce_threshold_uniform' \
         DAAIM.THRESHOLDS '[0.9, 0.9, 0.9, 0.9, 0.9, 0.9]' \
         DAAIM.THRESHOLD 0.9 \
-        DAAIM.RESIZE_ENABLE True \
+        DAAIM.RESIZE_ENABLE True
 now=$(date +"%T")
 echo "time after DA training to AVA with Kinetics Source: $now"
 
@@ -56,7 +56,7 @@ python tools/run_net.py --cfg ${CFG_FILE} \
     OUTPUT_DIR ${COUT_DIR} \
     AVA.FRAME_DIR "/srv/beegfs02/scratch/da_action/data/kinetics/images" \
     AVA.FRAME_LIST_DIR "/srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_6_5000_all/frame_lists/" \
-    AVA.ANNOTATION_DIR "/srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_6_5000_all/annotations/" \
+    AVA.ANNOTATION_DIR "/srv/beegfs02/scratch/da_action/data/datasets_yifan/kinetics_6_5000_all/annotations/"
 now=$(date +"%T")
 echo "time after testing DA to AVA Supervised Kinetics on AVA: $now"
 

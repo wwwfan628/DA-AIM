@@ -36,7 +36,7 @@ python tools/run_net.py --cfg ${CFG_FILE} \
         SOLVER.WARMUP_START_LR 0.0025 \
         SOLVER.COSINE_END_LR 0.00025 \
         SOLVER.WARMUP_EPOCHS 1.0 \
-        SOLVER.MAX_EPOCH 6 \
+        SOLVER.MAX_EPOCH 6
 
 now=$(date +"%T")
 echo "time after DA training to AVA with Kinetics Source: $now"
@@ -54,7 +54,7 @@ python tools/run_net.py --cfg ${CFG_FILE} \
     OUTPUT_DIR ${COUT_DIR} \
     AVA.FRAME_DIR ${TARGET_DIR} \
     AVA.FRAME_LIST_DIR "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/ava_6_5000_all/frame_lists/" \
-    AVA.ANNOTATION_DIR "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/ava_6_5000_all/annotations/" \
+    AVA.ANNOTATION_DIR "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/ava_6_5000_all/annotations/"
 
 now=$(date +"%T")
 echo "time after testing DA to AVA Supervised Kinetics on AVA: $now"
