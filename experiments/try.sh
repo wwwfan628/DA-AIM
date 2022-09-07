@@ -14,7 +14,7 @@ EVAL_THRESH=0.8
 COUT_DIR=/home/yiflu/Desktop/experiments/KIN2AVA/
 # Training
 echo "#################### Training on KIN #####################"
-cd ../..
+cd ..
 CFG_FILE=configs/DA-AIM/KIN2AVA/SLOWFAST_32x2_R50_DA_AIM.yaml
 python tools/run_net.py --cfg ${CFG_FILE} \
         AVA.DETECTION_SCORE_THRESH ${TRAIN_THRESH} \
