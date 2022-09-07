@@ -24,8 +24,8 @@ AVA:
   ANNOTATION_DIR: "/cluster/work/cvl/susaha/dataset/action-dataset/datasets_yifan/kinetics_6_5000_all/annotations/"
   LABEL_MAP_FILE: "kinetics_action_list_v2.2.pbtxt"
   EXCLUSION_FILE: "kinetics_val_excluded_timestamps.csv"
-  TRAIN_LISTS: ["kinetics_train.csv"]
-  TEST_LISTS: ["kinetics_val.csv"]
+  TRAIN_LISTS: ["train.csv"]
+  TEST_LISTS: ["val.csv"]
   FULL_TEST_ON_VAL: False
   TRAIN_GT_BOX_LISTS: ["kinetics_train.csv"]
   TRAIN_PREDICT_BOX_LISTS: []
