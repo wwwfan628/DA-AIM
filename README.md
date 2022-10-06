@@ -28,7 +28,7 @@ challenging domain adaptation benchmarks.
 ### Demo on IhD-1 Dataset
 
 <div align="center">
-  <img src="pictures/IhD1_demo.gif" width="600px"/>
+  <img src="pictures/IhD1_demo.gif" width="2000px"/>
 </div>
 
 
