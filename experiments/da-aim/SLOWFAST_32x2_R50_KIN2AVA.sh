@@ -30,9 +30,9 @@ python tools/run_net.py --cfg ${CFG_FILE} \
         TRAIN.BATCH_SIZE 24 \
         TRAIN.CHECKPOINT_FILE_PATH "cluster/work/cvl/susaha/dataset/action-dataset/pretrained_model/SLOWFAST_8x8_R50.pyth" \
         DATA_LOADER.NUM_WORKERS 2 \
-        SOLVER.BASE_LR 0.01 \
-        SOLVER.WARMUP_START_LR 0.001 \
-        SOLVER.COSINE_END_LR 0.0001 \
+        SOLVER.BASE_LR 0.025 \
+        SOLVER.WARMUP_START_LR 0.0025 \
+        SOLVER.COSINE_END_LR 0.00025 \
         SOLVER.WARMUP_EPOCHS 1.0 \
         SOLVER.MAX_EPOCH 6 \
         DAAIM.AUGMENTATION_ENABLE True \

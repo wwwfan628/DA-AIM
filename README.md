@@ -148,7 +148,7 @@ challenging domain adaptation benchmarks.
   </div>
 
 
-The paper can be found here: [[Arxiv]]()
+The paper can be found here: [[Arxiv]](https://arxiv.org/abs/2209.15439)
 
 In case of interest, please consider citing:
 
@@ -201,19 +201,20 @@ Large-scale datasets are reduced because of three reasons:
 We provide annotations and the corresponding video frames of the reduced datasets. The numbers contained in the name of 
 the dataset suggest the number of action classes, the maximum number of training and validation samples for each action class. For example, 
 `ava_6_5000_all` suggests there are `6` action classes, for each action class we have at most `5000` 
-training samples and `all` validation samples from the original dataset are kept.
+training samples and `all` validation samples from the original dataset are kept. Please, download the video frames
+and annotations from [here](https://data.vision.ee.ethz.ch/susaha/wacv2023_datasets/) and extract them to `Datasets/Annotations` or
+`Datasets/Frames`.
 
-**ava_6_5000_all:** is reduced from the original **AVA** dataset. Please, download the video frames
-and annotations from [here]() and extract them to `Datasets/Annotations/ava_6_5000_all`. 
+**ava_6_5000_all:** is reduced from the original **AVA** dataset. We selected `5000` training samples for classes `bend/bow`, 
+`lie/sleep`, `run/jog`, `sit`, `stand` and `walk` and kept all validation samples from those classes. 
 
-**kinetics_6_5000_all:** is reduced from the original **AVA-Kinetics** dataset. Please, download the video frames
-and annotations from [here]() and extract them to `Datasets/Annotations/kinetics_6_5000_all`.
+**kinetics_6_5000_all:** is reduced from the original **AVA-Kinetics** dataset. We selected `5000` training samples for classes `bend/bow`, 
+`lie/sleep`, `run/jog`, `sit`, `stand` and `walk` and kept all validation samples from those classes.
 
 You can also use commands to download and extract datasets:
 ```
-wget https://         # ava_6_5000_all
-wget https://         # kinetics_6_5000_all
-tar -C Datasets/Frames -xvf xxx.tar         # extract frames to Datasets/Frames directory
+wget https://data.vision.ee.ethz.ch/susaha/wacv2023_datasets    # download datasets
+tar -C Datasets/Frames -xvf xxx.tar     # extract frames to Datasets/Frames directory
 ```
 
 The final folder structure should look like this:
