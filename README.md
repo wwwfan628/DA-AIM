@@ -203,7 +203,7 @@ the dataset suggest the number of action classes, the maximum number of training
 `ava_6_5000_all` suggests there are `6` action classes, for each action class we have at most `5000` 
 training samples and `all` validation samples from the original dataset are kept. Please, download the video frames
 and annotations from [here](https://data.vision.ee.ethz.ch/susaha/wacv2023_datasets/) and extract them to `Datasets/Annotations` or
-`Datasets/Frames`.
+`Datasets/Frames`. Contact author [Suman Saha](mailto:suman.saha@vision.ee.ethz.ch) for more details of downloading.
 
 **ava_6_5000_all:** is reduced from the original **AVA** dataset. We selected `5000` training samples for classes `bend/bow`, 
 `lie/sleep`, `run/jog`, `sit`, `stand` and `walk` and kept all validation samples from those classes. 
